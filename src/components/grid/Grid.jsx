@@ -1,11 +1,15 @@
 import './Grid.css';
 import { Row } from "./Row";
+import { colsCountAtom, rowsCountAtom } from '../atoms'
+import { useAtom } from 'jotai';
 
-export function Grid(props) {
+export function Grid() {
+    const [colsCount, setColsCount] = useAtom(colsCountAtom)
+    const [rowsCount, setRowsCount] = useAtom(rowsCountAtom)
     return (
         <>
             <div id="grid">
-                {Array(parseInt(props.rowsCount)).fill().map((v, i) => <Row colsCount={props.colsCount} key={i}/>)}
+                {Array(parseInt(rowsCount)).fill().map((v, i) => <Row key={i} rowNumber={i}/>)}
             </div>
         </>
     )

@@ -1,10 +1,15 @@
-export function Rows(props) {
+import { useAtom } from 'jotai'
+import { rowsCountAtom } from '../atoms'
+
+export function Rows() {
+    const [rowsCount, setRowsCount] = useAtom(rowsCountAtom)
 
     return (
         <>
             Number of rows:
             <input type="number" name="rows" id="rows"
-                onChange={e => props.onChange(e.target.value) }/>
+                value={rowsCount}
+                onChange={e => setRowsCount(parseInt(e.target.value)) }/>
         </>
         )
 }
